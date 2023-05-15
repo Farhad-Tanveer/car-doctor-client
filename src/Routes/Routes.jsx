@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
+import About from "../pages/About/About";
 import Bookings from "../pages/Bookings/Bookings";
 import BookService from "../pages/BookService/BookService";
 import Home from "../pages/Home/Home/Home";
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
+        path: "/about",
+        element: <About></About>,
+      },
+      {
         path: "/login",
         element: <Login></Login>,
       },
@@ -26,7 +31,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/book/:id",
-        element: <BookService></BookService>,
+        element: (
+          <PrivateRoute>
+            <BookService></BookService>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:3000/services/${params.id}`),
       },

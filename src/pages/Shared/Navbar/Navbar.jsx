@@ -9,7 +9,7 @@ const Navbar = () => {
 
   const handleLogout = () => {
     logOut()
-      .then()
+      .then(() => {})
       .then((error) => console.log(error));
   };
 
